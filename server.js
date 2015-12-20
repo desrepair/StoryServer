@@ -26,25 +26,23 @@ app.get('/newsSubjects', function(req, res) {
         if (err) {
             console.log(err);
         } else {
-            newsSubjects.subjects = [];
             for (var i in rows) {
-                console.log(i + ': ' + rows[i].Subject);
                 subjects.push(rows[i].Subject);
                 if (i === '4') {
-                    console.log('The Terminator');
-                    newsSubjects.subjects = subjects;
-                    console.log(subjects);
-                    res.json(newsSubjects);
+                    res.json({subjects: subjects});
                 }
             }
-            console.log('Donezo');
         }
     });
 });
 
 app.get('/topStories', function(req, res) {
     conn.query('SELECT * FROM TopStories', function(err, rows, fields) {
-
+        var stories = [];
+        if (err) {
+            console.log(err);
+        } else {
+        } 
     });
 });
 
