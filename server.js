@@ -9,8 +9,10 @@ var conn = mysql.createConnection({
     password : 'topstory',
     database : 'stories',
 });
+var newsSubjects = {};
+newsSubjects.subjects = [];
 
-app.listen(80);
+app.listen(3000);
 console.log('Express started on port 3000.');
 app.use(express.static('public'));
 
@@ -19,18 +21,31 @@ app.get('/', function(req, res) {
 });
 
 app.get('/newsSubjects', function(req, res) {
-    conn.query('SELECT * FROM TopSubjects', function(err, rows, fields) {
+    conn.query('SELECT * FROM TopSubjects', function(err, rows, fields) { 
         var subjects = [];
         if (err) {
             console.log(err);
         } else {
+            newsSubjects.subjects = [];
             for (var i in rows) {
+                console.log(i + ': ' + rows[i].Subject);
                 subjects.push(rows[i].Subject);
+                if (i === '4') {
+                    console.log('The Terminator');
+                    newsSubjects.subjects = subjects;
+                    console.log(subjects);
+                    res.json(newsSubjects);
+                }
             }
-            res.json({subjects: subjects});
+            console.log('Donezo');
         }
     });
-    console.log(subjects);
+});
+
+app.get('/topStories', function(req, res) {
+    conn.query('SELECT * FROM TopStories', function(err, rows, fields) {
+
+    });
 });
 
 /*var getTopSubjects = function() {
