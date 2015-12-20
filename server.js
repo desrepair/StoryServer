@@ -2,6 +2,13 @@ var mysql = require('mysql');
 var util = require('util');
 var express = require('express');
 var app = express();
+
+var bodyParser = require('body-parser');
+var multer = require('multer');
+var upload = multer();
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: true}));
+
 var conn = mysql.createConnection({
     host     : 'ajz2120stories.cz6woaizkeyb.us-west-2.rds.amazonaws.com',
     port     : '3306',
@@ -20,7 +27,7 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/newsSubjects', function(req, res) {
+app.get('/newsSubjects', upload.array(), function(req, res) {
     conn.query('SELECT * FROM TopSubjects', function(err, rows, fields) { 
         var subjects = [];
         if (err) {
@@ -36,13 +43,20 @@ app.get('/newsSubjects', function(req, res) {
     });
 });
 
-app.get('/topStories', function(req, res) {
-    conn.query('SELECT * FROM TopStories', function(err, rows, fields) {
+app.post('/topStories', function(req, res) {
+    var sqlResults = 'SELECT * FROM TopStories WHERE Subjects LIKE \'%' + req.body.subject  + '%\';';
+    conn.query(sqlResults, function(err, rows, fields) {
         var stories = [];
         if (err) {
             console.log(err);
         } else {
-        } 
+            for (var i = 0; i < rows.length; i++) {
+                stories.push(rows[i]);
+                if (i === rows.length - 1) {
+                    res.json({results: stories});
+                }
+            }
+        }
     });
 });
 

@@ -9,7 +9,9 @@
   "dependencies": {
     "mysql": "*",
     "util": "*",
-    "express": "*"
+    "express": "*",
+    "body-parser": "*",
+    "multer": "*"
   },
   "author": "Khetthai Laksanakorn",
   "license": "ISC"
