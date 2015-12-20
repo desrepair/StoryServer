@@ -27,8 +27,8 @@ app.get('/', function(req, res) {
     res.sendFile(__dirname + '/public/index.html');
 });
 
-app.get('/newsSubjects', upload.array(), function(req, res) {
-    conn.query('SELECT * FROM TopSubjects', function(err, rows, fields) { 
+app.get('/newsSubjects', function(req, res) {
+    conn.query('SELECT * FROM TopSubjects', function(err, rows, fields) {
         var subjects = [];
         if (err) {
             console.log(err);
@@ -59,6 +59,45 @@ app.post('/topStories', function(req, res) {
         }
     });
 });
+
+app.get('/tweetSubjects', function(req, res) {
+    var subjects = {};
+    var topSubjects = [];
+
+    connTweets.query('SELECT * FROM Tweets ORDER BY Timestamp DESC LIMIT 20000', function(err, rows, fields) {
+      if (err) {
+        console.log(err);
+      } else {
+        for (var i in rows) {
+          var tagField = rows[i].Hashtag;
+          var tags = tagField.split(' ');
+          tags.pop();
+          for (var tag in tags) {
+            //console.log(tags[tag]);
+            var subject = tags[tag];
+            // discard foreign language characters
+            if (subject.search(/\?\?+/) === -1)
+            {
+              if (subjects[subject] === undefined && subject !== '') {
+                subjects[subject] = 1;
+              } else if (subject !== '') {
+                subjects[subject]++;
+              }
+            }
+          }
+        }
+        //console.log(subjects);
+        var keysSorted = Object.keys(subjects).sort(function(a,b) {return -(subjects[a] - subjects[b])});
+        //console.log(keysSorted);
+        for (var i = 0; i < 5 && i < keysSorted.length; i++) {
+          topSubjects.push(keysSorted[i]);
+          if (i === 4) {
+              res.json({subjects: topSujbects});
+          }
+        }
+      }
+    });
+})
 
 /*var getTopSubjects = function() {
     var subjects = [];
