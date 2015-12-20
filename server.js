@@ -9,13 +9,22 @@ var upload = multer();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-var conn = mysql.createConnection({
+var conn = mysql.createConnection({ // stories DB
     host     : 'ajz2120stories.cz6woaizkeyb.us-west-2.rds.amazonaws.com',
     port     : '3306',
     user     : 'topstory',
     password : 'topstory',
     database : 'stories',
 });
+
+var connTweets = mysql.createConnection({ // general tweets DB
+  host     : 'projectdb.cgoq09tt4tlc.us-west-2.rds.amazonaws.com',
+  port     : '3306',
+  user     : 'venciya',
+  password : 'venciyam',
+  database : 'TweetMap',
+});
+
 var newsSubjects = {};
 newsSubjects.subjects = [];
 
