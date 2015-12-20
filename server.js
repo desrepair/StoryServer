@@ -108,6 +108,23 @@ app.get('/tweetSubjects', function(req, res) {
     });
 })
 
+app.post('/topTweets', function(req, res) {
+    var sqlResults = 'SELECT * FROM Tweets WHERE Subjects LIKE \'%' + req.body.subject  + '%\';';
+    connTweets.query(sqlResults, function(err, rows, fields) {
+        var tweets = [];
+        if (err) {
+            console.log(err);
+        } else {
+            for (var i = 0; i < rows.length; i++) {
+                stories.push(rows[i]);
+                if (i === rows.length - 1) {
+                    res.json({results: tweets});
+                }
+            }
+        }
+    });
+});
+
 /*var getTopSubjects = function() {
     var subjects = [];
     conn.query('SELECT * FROM TopSubjects', function(err, rows, fields) {
