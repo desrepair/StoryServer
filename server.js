@@ -109,7 +109,7 @@ app.get('/tweetSubjects', function(req, res) {
 })
 
 app.post('/topTweets', function(req, res) {
-    var sqlResults = 'SELECT * FROM Tweets WHERE Subjects LIKE \'%' + req.body.subject  + '%\';';
+    var sqlResults = 'SELECT * FROM Tweets WHERE Hashtag LIKE \'%' + req.body.subject  + '%\' ORDER BY Timestamp DESC LIMIT 50';
     connTweets.query(sqlResults, function(err, rows, fields) {
         var tweets = [];
         if (err) {
