@@ -101,7 +101,7 @@ app.get('/tweetSubjects', function(req, res) {
         for (var i = 0; i < 5 && i < keysSorted.length; i++) {
           topSubjects.push(keysSorted[i]);
           if (i === 4) {
-              res.json({subjects: topSujbects});
+              res.json({subjects: topSubjects});
           }
         }
       }
