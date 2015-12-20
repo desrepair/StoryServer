@@ -116,7 +116,7 @@ app.post('/topTweets', function(req, res) {
             console.log(err);
         } else {
             for (var i = 0; i < rows.length; i++) {
-                stories.push(rows[i]);
+                tweets.push(rows[i]);
                 if (i === rows.length - 1) {
                     res.json({results: tweets});
                 }
