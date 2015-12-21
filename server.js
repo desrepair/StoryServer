@@ -18,19 +18,19 @@ var conn = mysql.createConnection({ // stories DB
 });
 
 var connTweets = mysql.createConnection({ // general tweets DB
-  host     : 'projectdb.cgoq09tt4tlc.us-west-2.rds.amazonaws.com',
-  port     : '3306',
-  user     : 'venciya',
-  password : 'venciyam',
-  database : 'TweetMap'
+    host     : 'projectdb.cgoq09tt4tlc.us-west-2.rds.amazonaws.com',
+    port     : '3306',
+    user     : 'venciya',
+    password : 'venciyam',
+    database : 'TweetMap'
 });
 
 var connNewsTweets = mysql.createConnection ({ // news tweets DB
-    host     : '',
-    port     : '',
-    user     : 'venciya',
-    password : 'venciyam',
-    database : ''
+    host     : 'filtertweetmap.cgoq09tt4tlc.us-west-2.rds.amazonaws.com',
+    port     : '3307',
+    user     : 'awsvenciya',
+    password : 'awsvenciya1',
+    database : 'TweetMapFilter'
 });
 
 app.listen(3000);
