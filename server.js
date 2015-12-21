@@ -60,7 +60,7 @@ app.get('/newsSubjects', function(req, res) {
 
 // return stories from all sources matching subject provided in request body
 app.post('/topStories', function(req, res) {
-    var sqlResults = 'SELECT * FROM TopStories WHERE Subjects LIKE \'%' + req.body.subject  + '%\';';
+    var sqlResults = 'SELECT * FROM TopStories WHERE Subjects LIKE \'%' + req.body.subject  + ';%\'';
     conn.query(sqlResults, function(err, rows, fields) {
         var stories = [];
         if (err) {
@@ -95,7 +95,7 @@ app.get('/seriousNewsSubjects', function(req, res) {
 
 // return stories from NYT and Guardian matching subject provided in request body
 app.post('/topSeriousStories', function(req, res) {
-    var sqlResults = 'SELECT * FROM TopStories WHERE Subjects LIKE \'%' + req.body.subject  + '%\'; AND Source in (\'NYT\',\'Guardian\')';
+    var sqlResults = 'SELECT * FROM TopStories WHERE Subjects LIKE \'%' + req.body.subject  + ';%\' AND Source in (\'NYT\',\'Guardian\')';
     conn.query(sqlResults, function(err, rows, fields) {
         var stories = [];
         if (err) {
