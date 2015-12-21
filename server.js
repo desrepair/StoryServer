@@ -116,7 +116,7 @@ app.get('/tweetSubjects', function(req, res) {
     var subjects = {};
     var topSubjects = [];
 
-    connTweets.query('SELECT * FROM Tweets ORDER BY Timestamp DESC LIMIT 20000', function(err, rows, fields) {
+    connTweets.query('SELECT * FROM Tweets WHERE Timestamp > DATE_SUB(now(), INTERVAL 1 DAY) ORDER BY Timestamp DESC LIMIT 20000', function(err, rows, fields) {
       if (err) {
         console.log(err);
       } else {
@@ -153,7 +153,7 @@ app.get('/tweetSubjects', function(req, res) {
 
 // return up to 50 sample tweets from unfiltered tweet stream matching subject provided in request body
 app.post('/topTweets', function(req, res) {
-    var sqlResults = 'SELECT * FROM Tweets WHERE Hashtag LIKE \'%' + req.body.subject  + '%\' ORDER BY Timestamp DESC LIMIT 50';
+    var sqlResults = 'SELECT * FROM Tweets WHERE Hashtag LIKE \'%' + req.body.subject  + '%\' AND Timestamp > DATE_SUB(now(), INTERVAL 1 DAY) ORDER BY Timestamp DESC LIMIT 50';
     connTweets.query(sqlResults, function(err, rows, fields) {
         var tweets = [];
         if (err) {
@@ -174,7 +174,7 @@ app.get('/newsTweetSubjects', function(req, res) {
     var subjects = {};
     var topSubjects = [];
 
-    connNewsTweets.query('SELECT * FROM Tweets ORDER BY Timestamp DESC LIMIT 20000', function(err, rows, fields) {
+    connNewsTweets.query('SELECT * FROM Tweets WHERE Timestamp > DATE_SUB(now(), INTERVAL 1 DAY) ORDER BY Timestamp DESC LIMIT 20000', function(err, rows, fields) {
       if (err) {
         console.log(err);
       } else {
@@ -211,7 +211,7 @@ app.get('/newsTweetSubjects', function(req, res) {
 
 // return up to 50 sample tweets from news filtered tweet stream matching subject provided in request body
 app.post('/topNewsTweets', function(req, res) {
-    var sqlResults = 'SELECT * FROM Tweets WHERE Hashtag LIKE \'%' + req.body.subject  + '%\' ORDER BY Timestamp DESC LIMIT 50';
+    var sqlResults = 'SELECT * FROM Tweets WHERE Hashtag LIKE \'%' + req.body.subject  + '%\' AND Timestamp > DATE_SUB(now(), INTERVAL 1 DAY) ORDER BY Timestamp DESC LIMIT 50';
     connNewsTweets.query(sqlResults, function(err, rows, fields) {
         var tweets = [];
         if (err) {
