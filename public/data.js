@@ -14,28 +14,44 @@ function ajaxCall(type, endpoint, body, callback) {
 function populateAllNewsSubjects() {
     ajaxCall('GET', 'newsSubjects', null,  function(data) {
         console.log(data);
-        //CHANGE BUTTON TEXT HERE
+        document.getElementbyId("allnewsb1").value=data.subject[0];
+        document.getElementbyId("allnewsb2").value=data.subject[1];
+        document.getElementbyId("allnewsb3").value=data.subject[2];
+        document.getElementbyId("allnewsb4").value=data.subject[3];
+        document.getElementbyId("allnewsb5").value=data.subject[4];
     });
 }
 
 function populateReliableNewsSubjects() {
     ajaxCall('GET', 'seriousNewsSubjects', null, function(data) {
         console.log(data);
-        //CHANGE BUTTON TEXT HERE
+        document.getElementbyId("topnewsb1").value=data.subject[0];
+        document.getElementbyId("topnewsb2").value=data.subject[1];
+        document.getElementbyId("topnewsb3").value=data.subject[2];
+        document.getElementbyId("topnewsb4").value=data.subject[3];
+        document.getElementbyId("topnewsb5").value=data.subject[4];
     });
 }
 
 function populateAllTweetSubjects() {
     ajaxCall('GET', 'tweetSubjects', null, function(data) {
         console.log(data);
-        //CHANGE BUTTON TEXT HERE.
+        document.getElementbyId("twitterb1").value=data.subject[0];
+        document.getElementbyId("twitterb2").value=data.subject[1];
+        document.getElementbyId("twitterb3").value=data.subject[2];
+        document.getElementbyId("twitterb4").value=data.subject[3];
+        document.getElementbyId("twitterb5").value=data.subject[4];
     });
 }
 
 function populateNewsTweetSubjects() {
     ajaxCall('GET', 'newsTweetSubjects', null, function(data) {
         console.log(data);
-        //CHANGE BUTTON TEXT HERE.
+        document.getElementbyId("toptwitterb1").value=data.subject[0];
+        document.getElementbyId("toptwitterb2").value=data.subject[1];
+        document.getElementbyId("toptwitterb3").value=data.subject[2];
+        document.getElementbyId("toptwitterb4").value=data.subject[3];
+        document.getElementbyId("toptwitterb5").value=data.subject[4];
     });
 }
 
@@ -51,7 +67,10 @@ function getTopStories(subject) {
     body.subject = subject;
     ajaxCall('POST', 'topStories', body, function(data) {
         console.log(data);
-        //POPULATE NEWS HERE
+        var title = data.results[0].Title;
+        var storyURL = data.results[0].URL;
+        var articleEntry = '<p>' + title + '</p><p> <a href= ' + URL + '>' + URL + '</a></p>';
+        document.getElementbyId("panel1").value=articleEntry;
     });
 }
 
