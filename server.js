@@ -186,6 +186,7 @@ app.get('/newsTweetSubjects', function(req, res) {
           for (var tag in tags) {
             //console.log(tags[tag]);
             var subject = tags[tag];
+            subject = subject.toLowerCase();
             // discard foreign language characters
             if (subject.search(/\?\?+/) === -1)
             {
