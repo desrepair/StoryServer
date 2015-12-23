@@ -113,6 +113,9 @@ app.post('/topSeriousStories', function(req, res) {
             for (var i = 0; i < rows.length; i++) {
                 stories.push(rows[i]);
                 if (i === rows.length - 1) {
+                    res.set("Access-Control-Allow-Origin", "*");
+                    res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+                    res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
                     res.json({results: stories});
                 }
             }
@@ -154,6 +157,9 @@ app.get('/tweetSubjects', function(req, res) {
         for (var i = 0; i < 5 && i < keysSorted.length; i++) {
           topSubjects.push(keysSorted[i]);
           if (i === 4) {
+              res.set("Access-Control-Allow-Origin", "*");
+              res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+              res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
               res.json({subjects: topSubjects});
           }
         }
@@ -172,6 +178,9 @@ app.post('/topTweets', function(req, res) {
             for (var i = 0; i < rows.length; i++) {
                 tweets.push(rows[i]);
                 if (i === rows.length - 1) {
+                    res.set("Access-Control-Allow-Origin", "*");
+                    res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+                    res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
                     res.json({results: tweets});
                 }
             }
@@ -213,6 +222,9 @@ app.get('/newsTweetSubjects', function(req, res) {
         for (var i = 0; i < 5 && i < keysSorted.length; i++) {
           topSubjects.push(keysSorted[i]);
           if (i === 4) {
+              res.set("Access-Control-Allow-Origin", "*");
+              res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+              res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
               res.json({subjects: topSubjects});
           }
         }
@@ -231,6 +243,9 @@ app.post('/topNewsTweets', function(req, res) {
             for (var i = 0; i < rows.length; i++) {
                 tweets.push(rows[i]);
                 if (i === rows.length - 1) {
+                    res.set("Access-Control-Allow-Origin", "*");
+                    res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+                    res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
                     res.json({results: tweets});
                 }
             }
