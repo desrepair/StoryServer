@@ -33,7 +33,7 @@ var connNewsTweets = mysql.createConnection ({ // news tweets DB
     database : 'TweetMapFilter'
 });
 
-app.listen(3000);
+app.listen(8081);
 console.log('Express started on port 3000.');
 app.use(express.static('public'));
 
