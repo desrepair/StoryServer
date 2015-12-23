@@ -3,8 +3,8 @@
 
 <head>
 	<meta charset='utf-8'>
-	<title> Newstream App </title>
-	<meta name="description" content="Newstream App">
+	<title> TopStory </title>
+	<meta name="description" content="TopStory">
 
   <!-- JQuery -->
   <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
@@ -37,7 +37,7 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<a href="" class="navbar-brand">Newstream App</a>
+				<a href="" class="navbar-brand">TopStory</a>
 			</div> <!--Navbar header-->
 			<div class="collapse navbar-collapse" id="navbar-collapse">
 				<ul class="nav navbar-nav">
@@ -51,7 +51,7 @@
 	<!--Jumbotron-->
 	<div class="jumbotron">
 		<div class="containter text-center">
-			<h1>Newstream App</h1>
+			<h1>TopStory</h1>
 			<p>by Aaron, Mick, Dhruv, Venciya</p>
 
 			<div class="btn-group">
@@ -82,9 +82,7 @@
 				<div class="col-sm-12">
 					<div class="panel panel-default">
 						<div class="panel-body" id="panel1">
-							<span class="glyphicon glyphicon-ok"></span>
-							<h4>This is the all news stream panel</h4>
-							<p>Falalalaa lalaalaalaa</p>
+							<h4>Refreshing...</h4>
 						</div>
 					</div>
 				</div>
@@ -110,9 +108,7 @@
 				<div class="col-sm-12">
 					<div class="panel panel-default">
 						<div class="panel-body" id="panel2">
-							<span class="glyphicon glyphicon-ok"></span>
-							<h4>This is the NYT and Guardian stream panel</h4>
-							<p>Falalalaa lalaalaalaa</p>
+							<h4>Refreshing...</h4>
 						</div>
 					</div>
 				</div>
@@ -138,9 +134,7 @@
 				<div class="col-sm-12">
 					<div class="panel panel-default">
 						<div class="panel-body" id="panel3">
-							<span class="glyphicon glyphicon-ok"></span>
-							<h4>This is the All Twitter stream panel</h4>
-							<p>Falalalaa lalaalaalaa</p>
+							<h4>Refreshing...</h4>
 						</div>
 					</div>
 				</div>
@@ -166,9 +160,7 @@
 				<div class="col-sm-12">
 					<div class="panel panel-default">
 						<div class="panel-body" id="panel4">
-							<span class="glyphicon glyphicon-ok"></span>
-							<h4>This is the Top Twitter stream panel</h4>
-							<p>Falalalaa lalaalaalaa</p>
+							<h4>Refreshing...</h4>
 						</div>
 					</div>
 				</div>
@@ -180,19 +172,19 @@
 	<div class="container">
 		<section>
 			<div class="page-header" id="faq">
-				<h2>FAQs.<small> A few FAQs of the website to engage with customers.</small></h2>
+				<h2>FAQs.<small> A few FAQs of the project</small></h2>
 			</div>
 			<div class="panel-group" id="accordion">
 				<div class="panel panel-default">
 					<div class="panel-heading">
 						<div class="panel-title">
 							<a href="#collapse-1" data-toggle="collapse" data-parent="#accordion">
-								Question 1?
+								Where do you obtain the news articles?
 							</a>
 						</div><!--End panel title-->
 						<div id="collapse-1" class="panel-collapse collapse">
 							<div class="panel-body">
-								Answer 1
+								We obtain current articles from the New York Times and the Guardian, and obtain a random sample of articles from the last 24 hours using the Alchemy DataNews API. It in turn sources from various news sites and blogs.
 							</div>
 						</div><!--End panel collapse-->
 					</div>
@@ -201,12 +193,26 @@
 					<div class="panel-heading">
 						<div class="panel-title">
 							<a href="#collapse-2" data-toggle="collapse" data-parent="#accordion">
-								Question 2?
+								How to you determine the subjects to the news articles?
 							</a>
 						</div><!--End panel title-->
 						<div id="collapse-2" class="panel-collapse collapse">
 							<div class="panel-body">
-								Answer 2
+								We use the Alchemy concept tagging API and choose the results with the highest relevant scores.
+							</div>
+						</div><!--End panel collapse-->
+					</div>
+				</div>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<div class="panel-title">
+							<a href="#collapse-3" data-toggle="collapse" data-parent="#accordion">
+								How often are the site's results updated?
+							</a>
+						</div><!--End panel title-->
+						<div id="collapse-3" class="panel-collapse collapse">
+							<div class="panel-body">
+								Twitter results are constantly streaming and news results are updated every 4 hours due to API limits.
 							</div>
 						</div><!--End panel collapse-->
 					</div>
@@ -215,86 +221,10 @@
 		</section>
 	</div>
 
-	<!--Navbar: ContactUs section-->
-	<div class="container">
-		<section>
-			<div class="page-header" id="contact">
-				<h2>Contact Us<small> Contact us for more info!</small></h2>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-					<p>Send us a message or contact us from the address below</p>
-
-					<address>
-						<strong>Newstream App</strong></br>
-						45 Tiemann Place</br>
-						LL100</br>
-						P: 3516546354
-					</address>	
-				</div>
-
-				<div class="col-lg-8">
-					<form action="" class="form-horizontal">
-						<div class="form-group">
-							<label for="user-name" class="col-lg-2 control-label">Name</label>
-							<div class="col-lg-10">
-								<input type="text" class="form-control" id="user-name" placeholder="Enter your name">
-							</div>
-						</div><!--End form group-->
-						<div class="form-group">
-							<label for="user-email" class="col-lg-2 control-label">Email</label>
-							<div class="col-lg-10">
-								<input type="text" class="form-control" id="user-email" placeholder="Enter your email">
-							</div>
-						</div><!--End form group-->
-						<div class="form-group">
-							<label for="user-url" class="col-lg-2 control-label">Website</label>
-							<div class="col-lg-10">
-								<input type="text" class="form-control" id="user-url" placeholder="Enter your website if any">
-							</div>
-						</div><!--End form group-->
-						<div class="form-group">
-							<label for="user-message" class="col-lg-2 control-label">Any message</label>
-							<div class="col-lg-10">
-								<textarea name="user-message" id="user-message" class="form-control" cols="20" rows="10" placeholder="Enter your message"></textarea>
-							</div>
-						</div><!--End form group-->
-
-						<div class="form-group">
-							<div class="col-lg-10 col-lg-offset-2">
-								<button type="submit" class="btn btn-warning">Submit</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div><!--End the row-->
-		</section>
-	</div>
-
 	<!--Footer-->
 	<footer>
 		<hr>
 		<div class="container text-center">
-				<h3>Subscribe for more free stuff</h3>
-				<p>Enter your name and email</p>
-
-				<form action="" class="form-inline">
-					<div class="form-group">
-						<label for="subscription">Subscribe</label>
-						<input type="text" class="form-control" id="subscription" placeholder="Your name">
-					</div>
-					<div class="form-group">
-						<label for="email">Email ID</label>
-						<input type="text" class="form-control" id="email" placeholder="Your Email ID">
-					</div>
-					<button type="submit" class="btn btn-default">Subscribe</button>
-				</form>
-				<hr>
-				<ul class="list-inline">
-					<li><a href="http://www.twitter.com/kuchhal_dk">Twitter</a></li>
-					<li><a href="http://www.facebook.com/dhruvkuchhal">Facebook</a></li>
-				</ul>
 				<p>&copy; Copyright @ 2015</p>
 			</div>
 	</footer><!--End footer-->
