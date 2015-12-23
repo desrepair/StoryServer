@@ -34,7 +34,7 @@ var connNewsTweets = mysql.createConnection ({ // news tweets DB
 });
 
 app.listen(8081);
-console.log('Express started on port 3000.');
+console.log('Express started on port 8081.');
 app.use(express.static('public'));
 
 app.get('/', function(req, res) {
@@ -51,6 +51,9 @@ app.get('/newsSubjects', function(req, res) {
             for (var i in rows) {
                 subjects.push(rows[i].Subject);
                 if (i === '4') {
+                    res.set("Access-Control-Allow-Origin", "*");
+                    res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+                    res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
                     res.json({subjects: subjects});
                 }
             }
@@ -69,6 +72,9 @@ app.post('/topStories', function(req, res) {
             for (var i = 0; i < rows.length; i++) {
                 stories.push(rows[i]);
                 if (i === rows.length - 1) {
+                    res.set("Access-Control-Allow-Origin", "*");
+                    res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+                    res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
                     res.json({results: stories});
                 }
             }
@@ -86,6 +92,9 @@ app.get('/seriousNewsSubjects', function(req, res) {
             for (var i in rows) {
                 subjects.push(rows[i].Subject);
                 if (i === '4') {
+                    res.set("Access-Control-Allow-Origin", "*");
+                    res.set("Access-Control-Allow-Methods", "GET, POST, DELETE, PUT");
+                    res.set("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
                     res.json({subjects: subjects});
                 }
             }
