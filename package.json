@@ -2,7 +2,7 @@
   "name": "StoryServer",
   "version": "1.0.0",
   "description": "Server for handling http requests.",
-  "main": "server.js",
+  "main": "index.html",
   "scripts": {
     "start": "node server.js"
   },

@@ -1,6 +1,6 @@
 function ajaxCall(type, endpoint, body, callback) {
     $.ajax({
-        url: 'http://TopStory.elasticbeanstalk.com:3000/' + endpoint,
+        url: 'http://topstory.elasticbeanstalk.com:3000' + endpoint,
         type: type,
         data: body,
     }).done(function(data) {
