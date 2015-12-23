@@ -1,6 +1,6 @@
 function ajaxCall(type, endpoint, body, callback) {
     $.ajax({
-        url: 'http://desrepair.cloudapp.net:3000/' + endpoint,
+        url: 'http://localhost:3000/' + endpoint,
         type: type,
         data: body,
     }).done(function(data) {
@@ -69,13 +69,14 @@ function populateAllSubjects() {
 function getTopStories(subject) {
     var body = {};
     body.subject = subject;
+    var articleEntry = '';
     ajaxCall('POST', 'topStories', body, function(data) {
         console.log(data);
         var articleList = '';
         for (var i = 0; i < 10 && i < data.results.length; i++) {
             var title = data.results[i].Title;
             var storyURL = data.results[i].URL;
-            var articleEntry = articleEntry + '<p> <a href= ' + storyURL + '>' + title + '</a></p>';
+            articleEntry = articleEntry + '<p> <a href= ' + storyURL + '>' + title + '</a></p>';
         }
         document.getElementById("panel1").innerHTML=articleEntry;
     });
@@ -84,13 +85,14 @@ function getTopStories(subject) {
 function getTopSeriousStories(subject) {
     var body = {};
     body.subject = subject;
+    var articleEntry = '';
     ajaxCall('POST', 'topSeriousStories', body, function(data) {
         console.log(data);
         var articleList = '';
         for (var i = 0; i < 10 && i < data.results.length; i++) {
             var title = data.results[i].Title;
             var storyURL = data.results[i].URL;
-            var articleEntry = articleEntry + '<p> <a href= ' + storyURL + '>' + title + '</a></p>';
+            articleEntry = articleEntry + '<p> <a href= ' + storyURL + '>' + title + '</a></p>';
         }
         document.getElementById("panel2").innerHTML=articleEntry;
     });
@@ -99,12 +101,13 @@ function getTopSeriousStories(subject) {
 function getTopTweets(subject) {
     var body = {};
     body.subject = subject;
+    var articleEntry = '';
     ajaxCall('POST', 'topTweets', body, function(data) {
         console.log(data);
         var articleList = '';
         for (var i = 0; i < 10 && i < data.results.length; i++) {
             var title = data.results[i].Tweet;
-            var articleEntry = articleEntry + '<p>' + title + '</p>';
+            articleEntry = articleEntry + '<p>' + title + '</p>';
         }
         document.getElementById("panel3").innerHTML=articleEntry;
     });
@@ -113,12 +116,13 @@ function getTopTweets(subject) {
 function getTopNewsTweets(subject) {
     var body = {};
     body.subject = subject;
+    var articleEntry = '';
     ajaxCall('POST', 'topNewsTweets', body, function(data) {
         console.log(data);
         var articleList = '';
         for (var i = 0; i < 10 && i < data.results.length; i++) {
             var title = data.results[i].Tweet;
-            var articleEntry = articleEntry + '<p>' + title + '</p>';
+            articleEntry = articleEntry + '<p>' + title + '</p>';
         }
         document.getElementById("panel4").innerHTML=articleEntry;
     });
@@ -175,7 +179,7 @@ $(document).ready(function() {
     $('#twitterb5').click(function() {
         getTopTweets($('#twitterb5')[0].textContent);
     });
-    
+
     $('#toptwitterb1').click(function() {
         getTopNewsTweets($('#toptwitterb1')[0].textContent);
     });
@@ -192,7 +196,3 @@ $(document).ready(function() {
         getTopNewsTweets($('#toptwitterb5')[0].textContent);
     });
 });
-
-
-
-
